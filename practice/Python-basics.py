@@ -49,6 +49,7 @@ print(lst[:-3])
 print(lst[1:-1])
 
 usr = input("Please enter your name:")
+print("Hello", usr)
 
 
 
