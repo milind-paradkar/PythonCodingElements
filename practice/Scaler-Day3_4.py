@@ -72,7 +72,7 @@ HW: Write a while loop to print the following numbers:
 Exact output:
 1, 3, 7, 13, 21, 31, 43
 '''
-print("Print this: 1, 3, 7, 13, 21, 31, 43")
+print("\nPrint this: 1, 3, 7, 13, 21, 31, 43")
 for i in range(1, 7):
     init = 1;
     addition = 2;
@@ -80,4 +80,18 @@ for i in range(1, 7):
     init = addition
     print(addition, end=", ")
 
+#Day 7
+a= [1,2,3,4,5,6,7,8,9,10]
+a[6:3:-2] #it shows index 6,4, and stops at 3+1 (go in negative still stop --1=+1 step back
+a[::-1] #still prints all list in negative direction
 
+#Memorise lambda
+#Memorise map function
+
+b = 1, 'a', "b", 6.8
+print(b)
+
+m = [(1, "Milind"), (2, "shruti")]
+
+for elem in m:
+    print(elem[0])
