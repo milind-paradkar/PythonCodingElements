@@ -5,7 +5,8 @@ class Parent:
     parentProp = 'Parent Property'
     __privateParentProp = 'Private Parent Property'
 
-
+    def showPrivateParentProp(self):
+        return self.__privateParentProp
 class MyClass(Parent):
     pubMember = ''
     __privateMember = ''
@@ -14,7 +15,7 @@ class MyClass(Parent):
         self.member = m
         self.__privateMember = '__privateMember'
         self.__privateParentProp = '__privateParentProp changed'
-        print("In init dunder:", self.parentProp, self.__privateParentProp, self.member, self.__privateMember, sep=', ')
+        print("EDITED:In init dunder:", self.parentProp, self.__privateParentProp, self.member, self.__privateMember, sep=', ')
 
     def __str__(self):
         return f"This is My class with __privateMember:{self.__privateMember} and more.."
@@ -28,15 +29,22 @@ m = MyClass('Milind')
 m.member = 'Shruti'
 m.pubMember = 'Athawale'
 m.parentProp = 'HHHHHHHHH'
-m.__privateParentProp = 'private member'  # How's this possible to change value of private member outside class
+print("TODO: What is happening here ?")
+m.__privateParentProp = 'private member changed'  # How's this possible to change value of private member outside class
+m.parentProp = 'parent property changed'
+print(m.showPrivateParentProp(), m.parentProp, m._MyClass__privateMember, m._Parent__privateParentProp, sep=",")  #here it has no effect of above statement but no error on above statement.
+m._Parent__privateParentProp =' Private property changed outside also using obj._ClassName__privateProp way'
+#print(m.__privateMember, m.__privateParentProp) #This gives error
+print(f"Still this works: (Py way of accessing private members): {m._MyClass__privateMember},\n and \n  {m._Parent__privateParentProp}, <- I thought this would be same, but, see the difference ->  {m._MyClass__privateParentProp}")
 print(m.parentProp, m.member, m.pubMember,
-      sep='\n')  # AttributeError: 'MyClass' object has no attribute '__privateMember' and AttributeError: 'MyClass' object has no attribute '__privateMember'
-print("In init dunder:", m.parentProp, m.member,
-      sep=', ')  # Unresolved attribute reference '_Parent__privateParentProp' for class 'MyClass' and Unresolved attribute reference '_MyClas__privateMember' for class 'MyClass'
+      sep='\n')
+print("Hi .. 9999 :", m.parentProp, m.member,
+      sep=', ')
 my.my_add()
-
 print(my)
 print(m)
+dir(m)
+print("dir(m):", dir(m))
 print("m + m:" + (m + m))
 
 print("TODO: Implement +,-,*,/,<,>,<=,>= for class")
@@ -53,26 +61,6 @@ print(4 + obj2)
 '''
 
 
-# Python supports multiple inheritance
-class A:
-    a = 'a'
-
-
-class B(A):
-    b = 'b'
-
-
-class C(A):
-    c = 'c'
-
-
-class D(B, C):
-    d = 'd'
-
-
-dObj = D()
-print("Obj properties:", dObj.a, dObj.b, dObj.c, dObj.d)
-
 
 class SchoolMember:
     def __init__(self, name):
@@ -81,22 +69,40 @@ class SchoolMember:
 
 class Student(SchoolMember):  # Student is inherited from SchoolMember
     def __init__(self, name, grade):
-        self.name = name
         self.grade = grade
+        #self.name = name   #No need to call this explicitely
+
+        #No need to call super() as first statement in __init__() like in Java
+        #self is sent automatically
+        super().__init__(name)
 
 class Staff(SchoolMember):
 
     def __init__(self, name, salary):
-        self.name = name
+        super().__init__(name)
         self.salary = salary
 
 
 class Teacher(Staff):
 
     def __init__(self, name, salary, department):
-        self.name = name
-        self.salary = salary
         self.department = department
+        super().__init__(name, salary)
+        if super() is not None:
+            pass
 
+    def myFunc(obj, g,j):
+        print(g)
 
 t = Teacher("Teacher name", 20000, "Maths")
+print(t.name, t.salary, t.department)
+t.myFunc(3,4)
+x,y = [0,1]
+print(x,y)
+#using unpacking concept, swap two values
+a=10
+b=20
+print("",a,b)
+b,a = a, b
+print("swapped values with ease, without using third param\n",a,b)
+
