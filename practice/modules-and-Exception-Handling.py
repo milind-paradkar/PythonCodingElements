@@ -9,7 +9,7 @@ import math  # Import all of module, called by math.XXX as math.pow(2,3)
 # Method 2
 from math import *  # everything can be called without math. such as pow(2,3), overwritten code in case of collision.
 
-#Method 3
+# Method 3
 from math import floor, ceil, pow
 
 # Method 4
@@ -18,7 +18,7 @@ import MyMathModule as mm
 mm.my_add()
 floor(4.6)
 
-#Method 5
+# Method 5
 from math import factorial as fc, gamma as g
 
 r = math
@@ -27,7 +27,6 @@ print(math.pow(2, 3))
 print(r.pow(2, 3))
 
 help(math.pow)
-
 
 import random
 
@@ -38,14 +37,14 @@ random.seed(100)  # setting Seed value
 #  -- Exception Handling
 
 try:
-    print(3/2)
+    print(3 / 2)
 except ZeroDivisionError:
     print("Caught Divide by zero error")
 finally:
-    print("This will get executed all the time. (with/without error)" )
+    print("This will get executed all the time. (with/without error)")
 
 try:
-    print(3/0)
+    print(3 / 0)
 except ZeroDivisionError as z:
     print("Caught Divide by zero error:", z)
 finally:
@@ -61,7 +60,7 @@ for e in l:
     except Exception as ex:
         print(f'SOS - {ex}')
         # raise Exception('THIS PASSWORD IS INCORRECT')
-    print("-"*15)
+    print("-" * 15)
 
 
 class MyCustomException(Exception):
@@ -69,4 +68,22 @@ class MyCustomException(Exception):
         super().__init__(message)
 
 
-raise MyCustomException("This is My own exception")
+# raise MyCustomException("This is My own exception")
+
+
+class SalaryNotInRangeError(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
+
+def check_salary(salary):
+    try:
+        if salary not in range(10001, 100000):
+            raise SalaryNotInRangeError("Salary is not in range")
+        else:
+            print("Congratulations!!")
+
+    except SalaryNotInRangeError as e:
+        print(e)
+
+check_salary(10001)
