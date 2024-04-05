@@ -32,33 +32,40 @@ print("list(str).sort():", sList, sorted(sList), sorted(sList, reverse=True), sL
 
 print("\nReplace:", s1.replace("is", "was")) #  Thwas ?? 'is' replaced with 'was'
 
-print("\nisdigit():", "".isdigit(), " ".isdigit(), "9".isdigit(), "9 ".isdigit(), "-9".isdigit())
-print("\nisdigit():", "".isdecimal(), " ".isdecimal(), "9".isdecimal(), "9 ".isdecimal(), "9.0".isdecimal(), "-9.0".isdecimal())
+print("\nisdigit():", "".isdigit(), " ".isdigit(), "9".isdigit(), "9 ".isdigit(), "-9".isdigit(), "9.0".isdigit())
+print("isdecimal() -- does not contain any fractional part:", "".isdecimal(), ".".isdecimal(), "9".isdecimal(), "-9".isdecimal(), "9 ".isdecimal(), "9.0".isdecimal(), "-9.0".isdecimal())
+print('str.isdecimal() returns True only for numbers from 0 to 9, while the function str.isdigit() returns True for some other Unicode-supported chars as well.')
 print("isspace():", "".isspace(), " ".isspace(),"     ".isspace(), " d ".isspace())
-print("", "".isalpha(), " ".isalpha(), "asa".isalpha(), "as2".isalpha())
-print("isalnum():", "".isalnum(), "a".isalnum(), "1".isalnum(), "12dd2".isalnum())
+print("isalpha():", "".isalpha(), " ".isalpha(), "asa".isalpha(), "as2".isalpha())
+print("isalnum():", "".isalnum(), "a".isalnum(), "1".isalnum(), "12dd2".isalnum(), "12dff@dd".isalnum())
 s.islower()
 m='''
 ####This is GM message.###
 '''
 m.startswith("\n")
-
 m.strip("#")
-s.upper()
-s.capitalize()
+print("upper():", s1, s1.upper(), s1) # String is immutable, so functions RETURN new string, does not affect original string.
+print("lower():", s1, s1.lower(), s1) # String is immutable, so functions RETURN new string, does not affect original string.
+print("capitalize():", "normal string".capitalize())
+print("swapcase():", "ThIs Is Normal string with CAPS".swapcase())
 s.casefold()
 s.center(3,'*')
 s.count('is')
 s.find('is')
 s.casefold()
-s.isascii()
+# s.isascii('')
 s.isdigit()
 s.isdecimal()
 s.istitle()
 s.isupper()
-s.maketrans()
+# s.maketrans()
 s.partition()
 s.swapcase()
+
+print("IMMUTABEL: str, int, float, bool, None, tuple are immutable. If you want to change data stored by them,"
+      " you have to rewrite them, use functions that return new value, original obj remains same.")
+s[2] = 'R'
+print("MUTABLE: lst is mutable.")
 
 '''
 print(f'length: {s.strip()}')
