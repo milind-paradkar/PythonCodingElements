@@ -164,3 +164,15 @@ str = "This is unique string"
 uniq = set()
 uniq.update(str)
 print(uniq)
+
+tup1 = (1,2,3)
+tup2 = (1,2,3)
+print(tup1+tup2)
+
+set1 = {1,2,3}
+set2 = {2, 3, 7}
+# print(set1+set2) #Error because Class 'set' does not define '__add__', so the '+' operator cannot be used on its instances
+set1.add(4) # single element
+# set1.add(set2) # set cannot be added as it unhashable.
+set1.update(set2) # iterable
+print(set1)

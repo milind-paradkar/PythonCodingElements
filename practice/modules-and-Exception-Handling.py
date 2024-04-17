@@ -4,9 +4,10 @@
             package/library
 """
 # Method 1
-import math  # Import all of module, called by math.XXX as math.pow(2,3)
-
+import math  # Import all functions of module, called by math.XXX as math.pow(2,3)
+math.pow(4,5)
 # Method 2
+
 from math import *  # everything can be called without math. such as pow(2,3), overwritten code in case of collision.
 
 # Method 3
@@ -35,6 +36,11 @@ print("Random number:", r)
 random.seed(100)  # setting Seed value
 
 #  -- Exception Handling
+
+try:
+    print(3/0)
+except:
+    print("Error occurred. Generic. not any specific. No idea what this is, but it is taken care of for now.")
 
 try:
     print(3 / 2)
@@ -87,3 +93,4 @@ def check_salary(salary):
         print(e)
 
 check_salary(10001)
+check_salary(101)

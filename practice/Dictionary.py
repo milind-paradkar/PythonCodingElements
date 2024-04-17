@@ -65,3 +65,7 @@ for s in unique_set:
     '''ctr += 1
     print(ctr)'''
 print("Value_counts:", value_count)
+
+dict1 = {1: 1, 2:3}
+dict2 = {4: 1, 2:5}
+# dict1 + dict2 # Class 'dict' does not define '__add__', so the '+' operator cannot be used on its instances
