@@ -112,11 +112,22 @@ print("+++++ list addition is allowed +++++", ls + ls1)
 tup = (1150, 'sea_level', 909)
 tup1 = (8,7,6)
 # print(max(tup))
+print(tup[2])
 print("+++++ tuple addition is allowed +++++", tup + tup1)
 
 set1 = {1, 2, 4}
 set2 = {4, 5, 6}
+# print(set1[0]) # Sets are unordered so indexing is not allowed
+# Class 'set' does not define '__getitem__', so the '[]' operator cannot be used on its instances
 print(" ++++ set addition is not allowed")
 # print((set1 + set2)) ERROR unsupported operand type(s) for +: 'set' and 'set'
 
 print("START")
+
+
+
+
+
+
+
+
