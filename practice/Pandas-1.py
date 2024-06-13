@@ -4,8 +4,9 @@ ctr = 1
 
 
 def prln(*kwargs):
+    global ctr
     print(f"[{ctr}]:\n", *kwargs, "\n", sep='')
-    # ctr = ctr +1
+    ctr = ctr + 1
 
 
 # rowCount = 2
