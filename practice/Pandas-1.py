@@ -1,4 +1,7 @@
 import pandas as pd
+import time
+
+start_time = time.time()
 
 ctr = 1
 
@@ -134,4 +137,5 @@ prln(s.loc[['c', 'a']])
 
 
 
-
+# Average 0.9480547904968262 seconds on Lenovo
+print("---Whole execution completed in %s seconds ---" % (time.time() - start_time))
