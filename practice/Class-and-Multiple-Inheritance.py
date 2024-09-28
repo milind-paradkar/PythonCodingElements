@@ -1,11 +1,60 @@
 # Python supports multiple inheritance
+
+class simple:
+    a = 1  # Class level variable
+    b = 2
+    dList = [5,6,7]
+    def __init__(self, cParam, eList):
+        self.c = cParam # instance level variable
+        self.eList = eList
+    def method(self):
+        print("Method()")
+
+    def method(self, a):
+        print("Method(",a,")")
+
+s1 = simple(5, [1,2,3])
+s2 = simple(7,[4,5,6])
+s1.a = 10
+s2.b = 35
+s2.dList.append(65) # class level mutable object changes for all instances
+s2.eList.append(38) # object level mutable object changes only for that instance
+s1.c = 76
+s1.d = 1777
+print(s1.a, s1.b, s1.dList, s1.eList, s2.a,  s2.b, s2.dList, s2.eList, s1.c, s2.c, s1.d)
+
+
+#print("There is NO method overloading in Python?", s1.method(), s1.method(1) )
+
 class A:
     a = 'a'
     print("Random statement called, just for fun! outside of any def")
+
     def __init__(self, x):
         self.x = x
 
+    def __add__(self, other):
+        if type(other) == int:
+            return self.x + other
+        elif type(other) == A:
+            return self.x + other.x
 
+print("Type of Class:",type(A), type(A(4)), isinstance(A(2),A))
+
+class MoreDunders:
+    def __myOwn__(self):
+        print("My own dunder function")
+
+m = MoreDunders()
+m.__myOwn__()
+
+a1 = A(2)
+a2 = A(3)
+
+print(a1 + 25, a1 + a2, a1 + a2 + 100)
+print("I can do a1 + 3, but cannot do 3 + a1. Error we get is TypeError: unsupported operand type(s) for +: 'int' and 'A'  ")
+
+# exit()
 class B(A):
     b = 'b'
     print("Am I class?")
