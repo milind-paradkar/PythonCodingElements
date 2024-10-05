@@ -137,5 +137,5 @@ prln(s.loc[['c', 'a']])
 
 
 
-# Average 0.9480547904968262 seconds on Lenovo as against 0.14502191543579102 seconds on HP Pavillion
+# Average 0.9480547904968262 seconds on Lenovo as against 0.14976930618286133 seconds on HP Pavillion
 print("---Whole execution completed in %s seconds ---" % (time.time() - start_time))
