@@ -28,6 +28,7 @@ print("ls[::-1]==", ls[::-1])
 print("ls[::-3]==", ls[::-3])
 print("ls[2::-3]==", ls[2::-3])
 print("ls[5:8:-1]", ls[5:8:-1])
+print("ls[:5:1]  ==", ls[:5:1])  # started from first index and 5th index skipped
 print("ls[:5:-1]  ==", ls[:5:-1])  # started from last (9th) index and 5th index skipped
 print("ls[19:5:-1]==", ls[19:5:-1], "Ignored wrong index 19, started from 9th index and 5th index skipped")  # Ignored wrong index 19, started from 9th index and 5th index skipped
 print("ls[19:4:-2]==", ls[19:4:-2], "Ignored wrong index 19, started from 9th index and 4th index skipped")  # Ignored wrong index 19, started from 9th index and 5th index skipped

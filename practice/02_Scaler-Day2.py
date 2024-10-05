@@ -17,7 +17,7 @@ print(div//2, "// is known as floor division and it results in int, but floored 
 print('In Python, for concatenating strings in long statements'
       'does not require + to add multiple separate strings.'
       ' You see?' ' Two statements can be simply added one after another.'
-      '\n ** known as power operator', 4 ** 2)
+      '\n ** known as exponential (power) operator 4 ** 2:', 4 ** 2)
 
 # some lines added here.
 

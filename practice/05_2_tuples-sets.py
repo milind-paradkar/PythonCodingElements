@@ -1,14 +1,7 @@
 # Tuple : Immutable list of items. Obviously ORDERED.
 
-i = 0
-j = 0
-while i <= 2:
-    if j % 2:
-        j += 1
-    print(i, ":", j, end=" ")
-    i += 1
-    j += 1
 
+print()
 t = (1, 's', 3.4, None, False, "sodjdj")
 print(t)
 t1 = (1, 2, 3, 4)
@@ -33,11 +26,19 @@ tfl = tuple(l)
 print("\n", tuple(l))
 print(list(tfl))
 
+ty = tuple([7, 5, 3, 2, 1])
+print("ty:", ty)
+
+tu = (2, 3, 1)
+print("\nTuple is IMMUTABLE. So there are not add, append or update functions allowed.")
+print("But you can append a tuple with another simply by using + :", tu + (8, 7, 6) + ("10", False, 8.65))
+
 # PACKING and UNPACKING
 tpl = 1, 2, 3  # Assigning 3 variables
-tpl1 = t, singleMemberTuple, t1, l, t3  # Assigned more complex values
+tpl1 = t, singleMemberTuple, t1, l, t3, 1, "string", 9.8, True, False  # Assigned more complex values
 print(
-    f"Assigning multiple variable (use case: returning multiple items from return statement) are packed into tuple:\nsimple tuple: {tpl} \ncomplex tuple:{tpl1}")
+    f"Assigning multiple variable (use case: returning multiple items from return statement) are packed into tuple:"
+    f"\nsimple tuple: {tpl} \ncomplex tuple:{tpl1}")
 
 
 def captureThisAsTuple():
@@ -76,24 +77,25 @@ for name, marks in students:
     print(f"Student name:{name.center(10, ' ')} got {marks} marks")
 
 # Tuple maths
-a = (1, 2, 3)
-b = (4, 5, 6)
-c = a + b
+aT = (1, 2, 3)
+bT = (4, 5, 6)
+cT = aT + bT
 print(
-    f"\nTuple maths: a:{a}, b:{b} then a + b : length:{len(c)}, data:{c}\nREASON: TUPLES ARE IMMUTABLE.. so values do not add themselves but new members are added.")
+    f"\nTuple maths: a:{aT}, b:{bT} then a + b : length:{len(cT)}, data:{cT}\nREASON: TUPLES ARE IMMUTABLE.. so values do not add themselves but new members are added.")
 
 # Maths
 a = [1, 2, 3]
 b = [4, 5, 6]
 c = a + b
 print(f"\nList maths: a:{a}, b:{b} then a + b : length:{len(c)}, data:{c}\nREASON: New members are added.")
+# print(a+aT) or print(a+aT) fails
 
 f = [1, 2, 3]
 j = (6, f)
 print(j)
 f.append(5)
 print(j, "tuples are immutable.. but list inside tuple is always mutable.")
-(lambda n: print(f'Hello World {n}'))(7)
+(lambda n: print(f'Hello World {n} \n'))(7)
 
 people = [
     ("Alice", 30, "Female"),
@@ -109,7 +111,9 @@ people = [
 ]
 
 aged_people = sorted(people, key=lambda n: n[1])
-print(aged_people)
+print("aged_people:", aged_people)
+print("Male-Female sorting", sorted(people, key=lambda m: m[2]))
+print("Male-Female sorting", sorted(people, key=lambda m: m[2], reverse=True))
 
 # S  E  T  S
 # Sets are UNORDERED
@@ -118,20 +122,25 @@ print(aged_people)
 l = [4, 5, 3, 5, 7, 3, 6, 7, 8, 3, 3, 3, 5, 6, 6, 5, 5]
 t = (4, 5, 3, 5, 7, 3, 6, 7, 8, 3, 3, 3, 5, 6, 6, 5, 5)
 s = {4, 5, 3, 5, 7, 3, 6, 7, 8, 3, 3, 3, 5, 6, 6, 5, 5}  # Set automatically avoids same elements
-print(f'\n\nl={l}\nt={t}\ns={s}')
-
+print(f'\n\nl={l}\nt={t}\ns={s} (Set automatically avoids same elements)')
+s1 = {1, 2, 3, 4}
+s2 = {1, 2, 3, 4}
+s3 = {4, 3, 2, 1}
+print(f's1:{s1} s2:{s2} s3:{s3}  (printing set does not guaranty insertion or any order')
+print("Sets are not ordered: s1 == s2:", s1 == s2, " s1 == s3:", s1 == s3)
 # s[3] ERROR: Class 'set' does not define '__getitem__', so the '[]' operator cannot be used on its instances
 # Cannot use indexing s[3] becuase sets are unordered.
 
-se = {}
-print(type(se))
-print("\nType of empty {} resolves to", type(se), "because dictionaries and set, both use curley braces. So empty sets "
-                                                  "are created using se = set()")
+setSupposedToBe = {}
+print(type(setSupposedToBe))
+print("\nType of empty {} resolves to", type(setSupposedToBe),
+      "because dictionaries and set, both use curley braces. So empty sets "
+      "are created using se = set()")
 se = set()
-print(se, type(se))
+print(se, type(se), {}, type({}), type({2, 3}))
 
 print(5 in s, 10 in s)
-print("Sets are heretogenious, it can store any* data structures. But restrictions are:")
+print("Sets are heterogeneous, it can store any* data structures. But restrictions are:")
 print("Sets cannot store other sets, lists and dictionaries because they are MUTABLE")
 se.add(1)
 se.add(2.3)
@@ -145,8 +154,11 @@ print('So Immutable - INT,FLOAT,STRING,TUPLE,BOOL'
 # se.add([5,3,7,8]) # Not allowed to add single element which is list-- lists are mutable
 # but, following is allowed
 se.update(
-    [5, 3, 7, 8, 3])  # update is adding all elements present in iterable.. it is not for adding it as a single complex.
-print(se)
+    [5, 3, 7, 8,
+     3])  # update is adding all elements present in iterable.. it is not for adding it as a single complex datatype.
+se.update(
+    (9, 7, 10, 87, 98))  #Updating tuple adds all members because update takes iterable and adds all items in iterable
+print("Updated set:", se)
 se.remove(2.3)
 print(se)
 # SET INTERSECTION, UNION, DIFFERENCE-> A-B, B-A ,  SYMMETRIC DIFFERENCE-> (A-B) UNION (B-A)
@@ -163,16 +175,25 @@ print("\n Given a string, show all unique characters.")
 str = "This is unique string"
 uniq = set()
 uniq.update(str)
-print(uniq)
+print("uniq:\n", uniq, "\nor simply:\n", set(str))
+print("in list():\n", list(str))
+tup1 = (1, 2, 3)
+tup2 = (1, 2, 3)
+print(tup1 + tup2)
 
-tup1 = (1,2,3)
-tup2 = (1,2,3)
-print(tup1+tup2)
-
-set1 = {1,2,3}
+set1 = {1, 2, 3}
 set2 = {2, 3, 7}
-# print(set1+set2) #Error because Class 'set' does not define '__add__', so the '+' operator cannot be used on its instances
-set1.add(4) # single element
+# print(set1+set2) #Error because Class 'set' does not define '__add__', so the '+' operator cannot be used on its instances. Same for list or tuple works
+set1.add(4)  # single element
 # set1.add(set2) # set cannot be added as it unhashable.
-set1.update(set2) # iterable
+set1.update(set2)  # iterable
 print(set1)
+print()
+l.append([0, 9, 10])
+print(f"l after append:{l}")
+l.insert(2, (4, 9, 80))
+l.insert(2, [4, 9, 80])
+print(f"l after insert:{l}")
+l = l + [6, 4, 2, 0]
+print(f"l after +:{l}")
+# l = l + (6,4,2,0) Exact error= TypeError: can only concatenate list (not "tuple") to list

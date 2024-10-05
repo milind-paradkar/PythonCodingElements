@@ -8,23 +8,31 @@ print(bool(None))
 
 
 #day 4
-print(range(2))
+print()
+print(range(5))
+print(list(range(5)))
 print(list(range(1)))
 print(list(range(2)))
 print(list(range(10)))
-print(list(range(1, 10)))
-print(list(range(1, 10, 2)))
+print("list(range(0, 0)):", list(range(0, 0)))
+print("list(range(0, 1)):", list(range(0, 1)))
+print("list(range(1, 2)):", list(range(1, 2)))
+print("list(range(1, 10)):", list(range(1, 10)))
+print("\nlist(range(1, 10, 2)):", list(range(1, 10, 2)))
 print(list(range(1, 10, 3)))
 print(list(range(1, 10, 4)))
 print(list(range(10, -2)))
-print(list(range(10, 0, -2)))
+print("list(range(10, 0, -2)):", list(range(10, 0, -2)))
 print(list(range(10, 2, -2)))
+print(list(range(10, 1, -2)))
 print(list(range(-5, 2, 2)))
 print(list(range(-5, 2, 1)))
 print(list(range(-1, -10, 1)))
+print(list(range(-1, -10)))
+print(list(range(-10, -1)))
 print(list(range(-1, -10, -1)))
 
-print(" ")
+print()
 n = 10
 for i in range(1, n+1):
     if i % 2 == 0:

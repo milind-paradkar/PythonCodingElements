@@ -25,9 +25,9 @@ print_car_details(price=230000, brand="Volvo", color='red')
 def multiply(a, b):
     '''
     When you type three quotes below def, some auto suggestion comes. You can use this when used with help(func_name)
-    :param a:
-    :param b:
-    :return:
+    :param a: this is param a
+    :param b: b is used to do something
+    :return: this will return this
     '''
     print(a * b)
 
@@ -90,6 +90,7 @@ def useGlobalAge():
     print("age:", age)
 
 
+print("using useGlobalAge()")
 useGlobalAge()
 print("age:", age)
 
