@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8c257d5-0eff-4621-9573-f78f50b1bd4f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/practice/Class-and-Multiple-Inheritance.py" beforeDir="false" afterPath="$PROJECT_DIR$/practice/Class-and-Multiple-Inheritance.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/practice/Pandas-1.py" beforeDir="false" afterPath="$PROJECT_DIR$/practice/Pandas-1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/practice/Scaler--Using-Class-in-Py.py" beforeDir="false" afterPath="$PROJECT_DIR$/practice/07_Scaler--Using-Class-in-Py.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +36,7 @@
   "keyToString": {
     "Python.Class-and-Multiple-Inheritance.executor": "Run",
     "Python.Pandas-1.executor": "Run",
+    "Python.Scaler--Using-Class-in-Py.executor": "Run",
     "Python.extra-homework.executor": "Run",
     "Python.numpy-1.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",

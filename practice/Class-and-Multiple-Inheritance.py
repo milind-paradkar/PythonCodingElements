@@ -91,7 +91,7 @@ class B(A):
 
     def __init__(self, x, y):
         self.y = y
-        super().__init__(x)
+        super().__init__(self,y)
 
 
 class C(A):
@@ -108,7 +108,7 @@ class D(B, C):
     def __init__(self, x, y, z):
         super().__init__(x, z)  #Will call first inherited class's init which is in this case, class B, so z will be passed to y in class B. (not to z in class C)
         B.__init__(self, x, y)  #See the difference. super() passes self automatically, but CLASSNAME.__init() requires self to be passed explicitly.
-        C.__init__(self, x, z)
+        C.__init__(self, x, z) # When using super(), self is passed automatically. When called by class, self needs to be passed explicitly.
         self.z = z
 
 
@@ -225,6 +225,7 @@ class D(A, B, C):
 
 
 d = D()
+print("Printing help on d as below:\n")
 help(d)
 print(D.__mro__)
 print(d.x)

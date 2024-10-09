@@ -35,7 +35,7 @@ m.parentProp = 'parent property changed'
 print(m.showPrivateParentProp(), m.parentProp, m._MyClass__privateMember, m._Parent__privateParentProp, sep=",")  #here it has no effect of above statement but no error on above statement.
 m._Parent__privateParentProp =' Private property changed outside also using obj._ClassName__privateProp way'
 #print(m.__privateMember, m.__privateParentProp) #This gives error
-print(f"Still this works: (Py way of accessing private members): {m._MyClass__privateMember},\n and \n  {m._Parent__privateParentProp}, <- I thought this would be same, but, see the difference ->  {m._MyClass__privateParentProp}")
+print(f"Still this works: (Py way of accessing private members): {m._MyClass__privateMember},\nand\n{m._Parent__privateParentProp}, <- I thought this would be same, but, see the difference ->  {m._MyClass__privateParentProp}")
 print(m.parentProp, m.member, m.pubMember,
       sep='\n')
 print("Hi .. 9999 :", m.parentProp, m.member,
@@ -67,6 +67,9 @@ class SchoolMember:
         self.name = name
 
 
+print("\nIf we define any function using def in normal scenario, all params are explicit. Like param1, param2.")
+print("But when function is defined in class, it expects at least one param. First param for any function is object of own class.")
+print("Or even for function def myfunc(a, b, c), a is self object and you have to call only myObj.myfunc(b, c). Here myObj is passed as param 'a' automatically.\n")
 class Student(SchoolMember):  # Student is inherited from SchoolMember
     def __init__(self, name, grade):
         self.grade = grade
@@ -97,12 +100,4 @@ class Teacher(Staff):
 t = Teacher("Teacher name", 20000, "Maths")
 print(t.name, t.salary, t.department)
 t.myFunc(3,4)
-x,y = [0,1]
-print(x,y)
-#using unpacking concept, swap two values
-a=10
-b=20
-print("",a,b)
-b,a = a, b
-print("swapped values with ease, without using third param\n",a,b)
 
