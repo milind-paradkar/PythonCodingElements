@@ -13,6 +13,9 @@ print(f"Concatenated s:{s}")
 print(f'String.split(): splits by all separator. If sep is not specified or is None, '
       f'any whitespace string is a separator and empty strings are removed from the result.\n {s.split()}')
 
+print("\n Escape chars in f string- \\\\ for escaping \\ and {{}} for escaping {}")
+print(f'This statement contains \\ as \\n and {{}}  as {{ and }} and {{}} printing via escape sequences')
+
 s1 = "This string is funny thing in Python."
 print("\nString:",s1, "-->Split with some chars ('is'):", s1.split('is'))
 # Split: Input: str, Output: list(str)

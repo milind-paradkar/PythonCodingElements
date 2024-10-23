@@ -12,7 +12,7 @@ from math import *  # everything can be called without math. such as pow(2,3), o
 
 # Method 3
 from math import floor, ceil, pow
-
+floor(123.89)
 # Method 4
 import MyMathModule as mm
 
@@ -21,10 +21,13 @@ floor(4.6)
 
 # Method 5
 from math import factorial as fc, gamma as g
+print(fc(5))
+print(factorial(5))
+# help(math)
 
-r = math
 print(isinstance(math, object))
 print(math.pow(2, 3))
+r = math
 print(r.pow(2, 3))
 
 help(math.pow)

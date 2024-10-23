@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8c257d5-0eff-4621-9573-f78f50b1bd4f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/practice/Class-and-Multiple-Inheritance.py" beforeDir="false" afterPath="$PROJECT_DIR$/practice/Class-and-Multiple-Inheritance.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/practice/Scaler--Using-Class-in-Py.py" beforeDir="false" afterPath="$PROJECT_DIR$/practice/07_Scaler--Using-Class-in-Py.py" afterDir="false" />
-    </list>
+    <list default="true" id="d8c257d5-0eff-4621-9573-f78f50b1bd4f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,10 +30,13 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.06_Strings.executor": "Run",
+    "Python.09_Functional-programming.executor": "Run",
     "Python.Class-and-Multiple-Inheritance.executor": "Run",
     "Python.Pandas-1.executor": "Run",
     "Python.Scaler--Using-Class-in-Py.executor": "Run",
     "Python.extra-homework.executor": "Run",
+    "Python.modules-and-Exception-Handling.executor": "Run",
     "Python.numpy-1.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -45,13 +44,6 @@
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-python-sdk-0509580d9d50-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.14494.241" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
