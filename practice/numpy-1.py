@@ -1,28 +1,14 @@
 import numpy as nm
 import numpy as np
 
-
-def function_1():
-    print("third")
-    function_2()
-
-
-def function_2():
-    print("second")
-    function_3()
-
-
-def function_3():
-    print("first")
-
-
-function_1()
 a = [1,2,3,4,5,6]
-
-print(nm.array(a))
-print(nm.array(a) ** 2)
-print(nm.array(a) ** 3)
-print(type(nm.array(1)), "numpy n dimension array")
+npA = np.array(a)
+print(npA)
+print("Most operations are allowed to executed on array itself and results in performing on each element:\n", npA ** 2, sep='')
+print(npA ** 3)
+print(npA + 3)
+print(npA < 3)
+print(type(npA), "numpy n dimension array")
 
 '''
 t = ()
@@ -33,15 +19,12 @@ for i in range(1,1000,2):
 
 t = tuple(l)
 '''
-t = tuple(range(1,1000,2))
-nmt = nm.array(t)
+nmt = nm.array(range(1,1000,2))
+
 print(nmt)
-
-b = [(1,2,3,4,5,9), (7,8,9)]
-print(b[0][-1]) # To find element 9
-
 nparr = np.arange(10,90,10)
-print(nparr)
+print("Using np.arange() gives np array instead of range() whch gives simple list (not numpy array):", nparr)
+print(nparr.astype(float))
 print(nparr.astype('float'))
 print(nparr.astype('str'))
 
@@ -51,13 +34,14 @@ print("g:",g, "j", j)
 
 d1 = nm.array([3,7,3,6,2,56,325,3])
 d2 = nm.array([[3,7,3,7],[8,6,5,4]])
-d3 = nm.array([[3,9],[7,4]],[[4,9],[9,6]])
+# d3 = nm.array([[3,9],[7,4]],[[4,9],[9,6]])
 
 print(f"d1: dimension:{d1.ndim}, shape:{d1.shape}")
 print(f"d2: dimension:{d2.ndim}, shape:{d2.shape}")
-print(f"d3: dimension:{d3.ndim}, shape:{d3.shape}")
+# print(f"d3: dimension:{d3.ndim}, shape:{d3.shape}")
 
 
-
-
+l = [1,2,3,4,0,8,-8, "a", 'b', '0', '1', '-1']
+lnp = np.array(l, dtype=bool)
+print(lnp)
 
