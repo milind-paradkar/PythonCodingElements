@@ -3,6 +3,19 @@ from builtins import reversed
 from functools import reduce
 from timeit import timeit
 
+a = 10
+
+
+def aa():
+    # a = 30 This is creating new local variable a which does not overwrite a variable defined outside.
+    global a  # Remove this and you will get error for below. Reason is a is not defined inside function.
+    # when you say a=30 then you are redefining a. It never overwrites global a and never changes a outside this function.
+    a = a + 1
+
+
+aa()
+print(a)
+
 # It keeps data immutable
 
 # lambda functions -- One liner function
@@ -67,11 +80,13 @@ else:
 print("Greater" if x > y else "Less")
 comparison = lambda f, s: "Greater" if f > s else "Less"
 print(comparison(23, 87))
-l1 = [12, 32, 2, 98, 809, 9, 9,99, 78, 9,98, 54 , 8]
+l1 = [12, 32, 2, 98, 809, 9, 9, 99, 78, 9, 98, 54, 8]
 l2 = [43, 2, 67, 87, 6708, 78, 8, 7]
 print("map function with more than one arg...")
 print(list(map(comparison, l1, l2)))  # map function with more than one arg
-print("In case of more than one iterable, mapping function STOPS at min length of all iterables. THERE IS NO ERROR for length mismatch.")
+print(
+    "In case of more than one iterable, mapping function STOPS at min length of all iterables. THERE IS NO ERROR for length mismatch.")
+
 
 def greater(x, y):
     return x > y
@@ -102,6 +117,7 @@ def simpleFunc():
 def functionCaller(func):
     func()
 
+
 functionCaller(simpleFunc)
 
 
@@ -112,7 +128,8 @@ def generateExponential(power):
     return exp
 
 
-print(f"2 ** 4: generated:[{generateExponential(4)}] which is of type [{type(generateExponential(4))}] -> Actual output:{generateExponential(4)(2)} ")
+print(
+    f"2 ** 4: generated:[{generateExponential(4)}] which is of type [{type(generateExponential(4))}] -> Actual output:{generateExponential(4)(2)} ")
 square = generateExponential(2)
 cube = generateExponential(3)
 print("5 square:", square(5))
@@ -198,7 +215,7 @@ print("cubes", cubes, list(cubes))
 def checkSize(n):
     if n < 150:
         return 'S'
-    elif n <180:
+    elif n < 180:
         return 'M'
     else:
         return 'L'
@@ -206,11 +223,10 @@ def checkSize(n):
 
 # Same logic in ternary operator
 chkSz = lambda n: 'S' if n < 150 else 'M' if n < 180 else 'L'
-l = [120,155, 200, 177, 67, 700, 160]
+l = [120, 155, 200, 177, 67, 700, 160]
 print(list(map(checkSize, l)))
 # print("same as ?")
 print(list(map(chkSz, l)))
-
 
 # How to use timeit ?
 # timeit('[i** 2 for i in range(100)]', number=1000)
@@ -244,7 +260,8 @@ print("Important concept")
 a = [1, 2, 3, 4, 5, 6, 7]
 b = ('a', 'b', 'c')
 c = {'x', 'y', 'z'}
-print(f" a={a}\n b={b}\n c={c}\nconcatenating three iterables{list(map(lambda x, y, z: str(x) + str(y) + str(z), a, b, c))}\n")
+print(
+    f" a={a}\n b={b}\n c={c}\nconcatenating three iterables{list(map(lambda x, y, z: str(x) + str(y) + str(z), a, b, c))}\n")
 print("# Map loops over more than one variable and loops as long as at least one is exhausted.")
 print("# Map stops at end of smallest available iterable")
 
@@ -268,10 +285,11 @@ print("sum using reduce():", reduce(lambda x, y: x + y, num))
 print("avg using reduce():", reduce(lambda x, y: (x + y) / 2, num))
 print("min using reduce():", reduce(lambda x, y: x if x < y else y, num))
 print("max using reduce():", reduce(lambda x, y: x if x > y else y, num))
-print("multiplication using reduce():", reduce(lambda x, y: x*y, num))
+print("multiplication using reduce():", reduce(lambda x, y: x * y, num))
 print("sum using reduce():", reduce(lambda x, y: x + y, num))
 print("sum using reduce() with initial value (100):", reduce(lambda x, y: x + y, num, 100))
-print("sum using reduce() with initial value 100 (works as default output, if iterable is empty):", reduce(lambda x, y: x + y, [], 100))
+print("sum using reduce() with initial value 100 (works as default output, if iterable is empty):",
+      reduce(lambda x, y: x + y, [], 100))
 
 print("\n\nARGS and KWARGS (key named args")
 print("Put *any_var and that becomes pointer to take any number of arguments (0 or more)")
@@ -356,6 +374,7 @@ def random_func(x, a=100, *n, **z):
     print(f'n (args are collected as tuple)={n}')
     print(f'z (qwargs are collected as dictionary {{}})={z}')
 
+
 print("\nPARAM ORDER IS: positional_args, *args and then **named_args (qwargs): (x, *n, **z)")
 print(" *args is collected as tuple (), and **qwargs is colleted as dictionary {} ")
 random_func(1, 2, 3, 4, 5, 6, name="Milind", age=89, hobbies="Drawing and Swimming")
@@ -366,4 +385,3 @@ random_func(1, 2, 3, 4, 5, 6, name="Milind", age=89, hobbies="Drawing and Swimmi
 array = [[1, [[2]], [[[3]]], [[4], 5]]]
 result = lambda x: sum(map(result, x), []) if isinstance(x, list) else [x]
 print(result(array))
-
