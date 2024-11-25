@@ -72,7 +72,7 @@ print("Therefore, the range of NPS lies between [-100,100]")
 print("")
 print("NPS data link: https://drive.google.com/file/d/1c0ClC8SrPwJq5rrkyMKyPn80nyHcFikK/view?usp=sharing")
 print("score = np.loadtxt('survey.txt', dtype ='int')")
-
+print("Lecture Numpy-1, time: 2:15")
 
 print("\nM U L T I   D I M E N S I O N    N P    A R R A Y\n")
 d1 = np.array([3, 7, 3, 6, 2, 56, 325, 3])
