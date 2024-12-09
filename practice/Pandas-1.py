@@ -92,7 +92,8 @@ df.rename({"gdp_cap": "gdp_capacity"}, axis="columns", inplace=True)
 prln("Dropping row/column")
 df_good_names.drop(0)  # Drops a ROW (you thought a column?)
 prln(df_good_names.head(2))
-#df_goodnames.drop('Country_changed') # Trying to drop a column, but not successful. -- KeyError: "['Country_changed'] not found in axis"
+# df_goodnames.drop('Country_changed') # Trying to drop a column, but not successful. -- KeyError: "['Country_changed']
+# not found in axis"
 df_good_names_less_cols = df_good_names.drop('Country_changed', axis=1)  # Trying to drop a column, but not successful
 df_good_names_less_cols = df_good_names.drop(['Country_changed', 'Year_changed'],
                                              axis=1)  # Trying to drop a column, but not successful
@@ -172,16 +173,22 @@ prln("Using implicit index: Index which is not visible on screen: df_with_new_in
 prln("df.head(15):\n", df.head(15))
 prln("df.loc uses explicit index and all numbers are inclusive.")
 prln("-- df.loc[row,col] ----- col is optional")
+prln("df.loc[start,end] --> BOTH, start and end are INCLUDED. Unlike slicing where end is not included.")
 prln("df.loc[3:10] :\n", df.loc[3:10])
+prln("df.iloc[start,end] --> start is INCLUDED, end is EXCLUDING. like slicing where end is not included.")
+prln("df.iloc[3:10] :\n", df.iloc[3:10])
+
 prln("df_with_new_index.loc[3:100](in slicing, errors such as non-existing index 3 is ignored) "
      "(this works because slicing is used and only matching indexed items are shown):\n", df_with_new_index.loc[3:100])
 # prln("df_with_new_index.loc[3:100] (this works because slicing is used and only matching indexed items are shown):\n", df_with_new_index.loc[[3,100]]) # KeyError: '[3] not in index'
 prln("df_with_new_index.loc[[10,100] (this gives only 2 items because only matching indexed items are shown):\n",
      df_with_new_index.loc[[10, 100]])
 
-prln("df.loc[len(df) - 1::-3]:", df.loc[len(df) - 1::-3])
+prln("df.loc[len(df) - 1::-3]:\n", df.loc[len(df) - 1::-3])
+
 prln("df.loc[[1, 4, 5,7]]:", df.loc[[1, 4, 5,
-                                     7]])  # Cannot simply use [,] syntax just to send rows.. it would be treated as [row, col], that's why [[rows series]]
+                                     7]])  # Cannot simply use [,] syntax just to send rows.. it would be
+# treated as [row, col], that's why loc[[rows series]] and it can be loc[[rows series], [columns series]]
 prln("df.loc[1:7, :]:\n", df.loc[1:7, :])
 prln("df.loc[10:15, :]:\n", df.loc[10:15, :])
 
@@ -190,7 +197,8 @@ prln("df.loc[10:15, 'year':'gdp_capacity']\n", df.loc[10:15, 'year':"gdp_capacit
 
 # prln(df.loc[10:15, 1:3]) # second item in tuple not supported for numbering directly. axis 1 has names, so need to
 # give names only, not numbering
-prln(df.loc[10:15, ['year', 'population']])
+prln(df.loc[10:15, ['year', 'population']])  # 2D Simple [rows_series, column series version]
+prln(df.loc[10:15][['year', 'population']])  # difficult version
 
 # Similar to np.array([2,3,4])
 s = pd.Series([76, 5, 3, 7, 8, 9])
@@ -203,5 +211,31 @@ prln(s.loc['b':'e'])  # As this is Series, it has only row index (no column inde
 prln("this does not work:['e':'b']", s.loc['e':'b'])
 prln(s.loc[['c', 'a']])
 
-# Average 0.9480547904968262 seconds on Lenovo as against 0.14931440353393555 seconds on HP Pavillion
+prln("df.loc[1]:\n", df.loc[1])
+prln("df.loc[1]['year']:\n", df.loc[1]['year'])
+prln("df.loc[[1,2]]:\n", df.loc[[1,2]])
+
+prln("For df.loc[start,end], there is no guaranty that this will work, because explicit index can be repeating, "
+     "non-unique and data may be absent. \nSo use iloc which works on implicit indexes."
+     "\nif df.index=[1,2,3,5,3,2,1] which is allowed, 3 used in loc will give you multiple data and used in slicing "
+     "will give error because of multiple indices.")
+
+prln("With ilocc, you can use negative indexes also.  --everything same as accessing list because it works on implicit"
+     " indexes")
+print(df.iloc[[-1, -9]])
+prln("df.iloc[[-1, -9], -3:]:\n", df.iloc[[-1, -9], -3:])
+
+prln("You can set any column as your index (explicit) by: new_df = df.set_index['thousand_years_later]")
+df_new = df.set_index("thousand_years_later")
+print("index has no name:\n", df.head())
+print("Index has explicit name, it has been removed/not shown one more time, by default:\n", df_new.head())
+
+df_new = df.set_index("Country_changed")
+prln("Now I can use loc to access values in column 'Country_changed':df_new.loc['India']\n", df_new.loc['India'])
+
+prln("df_new.reset_index(): Added index column back to df (6 columns to 7 columns)\n", df_new.reset_index())
+prln("df_new.reset_index(drop=True):\n", df_new.reset_index(drop=True))
+
+
+# Average 0.9480547904968262 seconds on Lenovo as against 0.14931440353393555 seconds on HP Pavilion
 print("---Whole execution completed in %s seconds ---" % (time.time() - start_time))
