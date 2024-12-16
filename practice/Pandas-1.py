@@ -237,5 +237,5 @@ prln("df_new.reset_index(): Added index column back to df (6 columns to 7 column
 prln("df_new.reset_index(drop=True):\n", df_new.reset_index(drop=True))
 
 
-# Average 0.9480547904968262 seconds on Lenovo as against 0.14931440353393555 seconds on HP Pavilion
+# Average 0.9480547904968262 seconds on Lenovo as against 0.22855329513549805 seconds on HP Pavilion
 print("---Whole execution completed in %s seconds ---" % (time.time() - start_time))

@@ -141,5 +141,5 @@ merged = df2.merge(df1, on='A', how='outer', suffixes=('_left', '_right'))
 print('\nOutput:\n', merged)
 
 print()
-# Average 0.6331555843353271 seconds on Lenovo as against 0. seconds on HP Pavilion
+# Average 0.6331555843353271 seconds on Lenovo as against 0.12966084480285645 seconds on HP Pavilion
 print("---Whole execution completed in %s seconds ---" % (time.time() - start_time))
