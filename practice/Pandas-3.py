@@ -118,7 +118,9 @@ prln("Applying multiple aggregate functions:\n",
 prln("Applying multiple aggregate functions, reset_index:\n",
      moviesWithDirectors.groupby('director_name')['year'].agg(['min', 'max']).reset_index())
 
-print("Applying MULTIPLE aggregate functions on vote_average and year group on Director\n", moviesWithDirectors.groupby('director_name').agg({'vote_average': ['mean', 'min', 'max'], 'year': ['min', 'max']}))
+print("Applying MULTIPLE aggregate functions on vote_average and year group on Director\n",
+      moviesWithDirectors.groupby('director_name').agg(
+          {'vote_average': ['mean', 'min', 'max'], 'year': ['min', 'max']}))
 
 prln("-------Group based filtering-------")
 prln("High Budget Director: Director whose at least one movie has budget more than 1M.")
@@ -166,10 +168,9 @@ prln("output 2:\n", moviesWithDirectors.groupby('director_name').apply(func, inc
 prln("output 3:\n",
      moviesWithDirectors.groupby('director_name', group_keys=False).apply(func, include_groups=False))
 data = moviesWithDirectors.groupby('director_name', group_keys=False).apply(func, include_groups=False)
-prln("Final output: Filter risky movies, whose budget was even higher than the average revenue of the director from his other movies\n", data.loc[data['risky'] == True])
-
-
+prln("Final output: Filter risky movies, whose budget was even higher than the average revenue of the director "
+     "from his other movies\n", data.loc[data['risky']])
 
 print()
-# Average 1.021676778793335 seconds on Lenovo as against 0. seconds on HP Pavilion
+# Average 1.021676778793335 seconds on Lenovo as against 0.5006904602050781 seconds on HP Pavilion
 print("---Whole execution completed in %s seconds ---" % (time.time() - start_time))
