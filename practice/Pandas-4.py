@@ -87,6 +87,10 @@ print(data_agg.sort_values(by='active_years', ascending=False))
 data_agg['movies_per_yr'] = data_agg['title_count'] / data_agg['active_years']
 prln(data_agg.sort_values(by='movies_per_yr', ascending=False))
 prln("Top 5 most productive directors\n", data_agg.sort_values(by='movies_per_yr', ascending=False).iloc[:4])
+prln("Top 5 most productive directors\n", data_agg.sort_values(by='movies_per_yr', ascending=False).head())
+
+prln("TO_CSV")
+data_agg.to_csv("analysis_movies.csv", sep=',')
 
 print()
 # Average 0.49590563774108887 seconds on Lenovo as against 0. seconds on HP Pavilion
