@@ -23,11 +23,18 @@ movies = pd.read_csv("movies.csv", index_col=0)
 prln(movies)
 prln(movies.columns)
 
+movies.info()
+
+
 directors = pd.read_csv('directors.csv', index_col=0)
 prln("Directors:\n", directors)
 
 prln('Total movies:', movies.shape[0], " Unique directors:", movies['director_id'].nunique())
 prln('Total Directors:', directors.shape[0], " Unique Directors:", directors['id'].nunique())
+
+directors.info()
+prln("Director data contains Gender data which has many NaN entries (2349-1724)")
+e()
 
 dirAvailable = movies['director_id'].isin(directors['id'])
 prln("Director id availability in director's id: isin() :\n", dirAvailable)
