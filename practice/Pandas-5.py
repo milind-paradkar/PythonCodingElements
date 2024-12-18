@@ -65,6 +65,9 @@ prln("data_easy:\n", data_easy)
 data_easy.reset_index(inplace=True)
 prln("data_easy:\n", data_easy)
 
+prln("PIVOT and PIVOT TABLE")
+prln('https://www.scaler.com/academy/mentee-dashboard/class/125590/session?joinSession=1')
+
 print()
 # Average 0. seconds on Lenovo as against 0. seconds on HP Pavilion
 print("---Whole execution completed in %s seconds ---" % (time.time() - start_time))
