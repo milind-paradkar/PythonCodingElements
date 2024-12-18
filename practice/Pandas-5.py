@@ -68,6 +68,37 @@ prln("data_easy:\n", data_easy)
 prln("PIVOT and PIVOT TABLE")
 prln('https://www.scaler.com/academy/mentee-dashboard/class/125590/session?joinSession=1')
 
+prln(data_tidy.head(20))
+print("Type of NaN is:", type(np.nan))
+print("Solution for removing NaN is imputation- Filling the missing values. With-mean(), median(), mode(), 0, max")
+
+prln("isna():\n", data.iloc[:, :7].isna().head())
+prln("isnull(): same as isna()\n", data.isnull().head())
+
+prln(data.isna().sum()) # axis=0, by default
+prln(data.isna().sum(axis=1))  # axis=0, by default
+
+prln("#1: drop rows with na values")
+prln(f"data.dropna(): works by default on a row and drops ROWS if (any) value in a row is NaN:\n{data.isna().sum(axis=1)}\n", data.dropna())  # works on all rows with minimum 1 NaN
+prln(f"data.dropna(axis=1): Drops a COLUMN if any row in that column is missing\n{data.isna().sum()}\n", data.dropna(axis=1))
+
+prln("#2: Imputation (changing the contents)")
+prln("data.fillna(-1):\n", data.fillna(-1))
+
+prln(data['3:30:00'])
+prln(data['3:30:00'].fillna(-1))
+mean_val = data['3:30:00'].mean()
+prln(data['3:30:00'].fillna(mean_val))
+
+prln('But, above approach is too vague.. no group by is used. ')
+prln(data_easy['Pressure'][data_easy['Pressure'].isna()])
+prln(data_easy.groupby('Drug_Name')['Pressure'].head())
+prln(data_easy.groupby('Drug_Name', group_keys=False)['Pressure'].apply(lambda x: x.fillna(x.mean()), include_groups=False).head(15))
+prln(data_easy.groupby('Drug_Name', group_keys=False)['Pressure'].apply(lambda x: x.fillna(-11), include_groups=False).head(15))
+data_easy['Pressure'] = data_easy.groupby('Drug_Name', group_keys=False)['Pressure'].apply(lambda x: x.fillna(-11), include_groups=False).head(15)
+prln(data_easy['Pressure'].head(15))
+
+
 print()
-# Average 0. seconds on Lenovo as against 0. seconds on HP Pavilion
+# Average 0. seconds on Lenovo as against 0.08533406257629395 seconds on HP Pavilion
 print("---Whole execution completed in %s seconds ---" % (time.time() - start_time))
