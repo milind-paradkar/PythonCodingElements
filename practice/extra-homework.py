@@ -68,8 +68,6 @@ fruits = {'fruit': 'apple', 'color': 'green'}
 print(longest_value(fruits))
 
 
-
-
 class Student:
 
     def __init__(self, marks1, marks2, credits1, credits2):
@@ -115,15 +113,15 @@ obj = fruits(50)
 obj.quantity = 10
 obj.bags = 2
 
-print("jjjjjjjjjjj",obj.__dict__)
+print("jjjjjjjjjjj", obj.__dict__)
 
 ls = [1150, 'sea_level', 909]
-ls1 = [8,7,6]
+ls1 = [8, 7, 6]
 # print(max(tup))
 print("+++++ list addition is allowed +++++", ls + ls1)
 
 tup = (1150, 'sea_level', 909)
-tup1 = (8,7,6)
+tup1 = (8, 7, 6)
 # print(max(tup))
 print(tup[2])
 print("+++++ tuple addition is allowed +++++", tup + tup1)
@@ -137,10 +135,43 @@ print(" ++++ set addition is not allowed")
 
 print("START")
 
+import numpy as np
+
+x = np.array([-5, 9, 20, 25, -3, 5, 16, 10, -8])
+x[(x >= -5) & (x <= 15)] *= -1
+print(x)
+print(x.shape)
+
+a = np.arange(10)
+print(a[2:5])
+
+x = np.array([[200,200,200],[300,300,300],[400,400,400]])
+v = np.array([200,300,400])
+print((x / v[:,None])[1][1])
+print(np.sort(np.array(['Ram','Astha','Raghavendra'])))
+import numpy as np
 
 
+def specific_elements(mat1: np.ndarray, mat2, r1, r2, c1, c2):
+    '''mat1,mat2 are the two 2d numpy array.
+       r1,r2 are the start and end of rows indices
+       c1,c2 are the start and end of columns indices
+       Output = Return a numpy array according to indices'''
+
+    # STEP1 CHECK whether matrix multiplication is possible
+
+    ## STEP 2 Perform matrix multiplication
+
+    matmul_array = mat1.dot(mat2)
+
+    ## STEP 3 slice the array based on range value
+
+    result = matmul_array[r1:r2, c1:c2]
+
+    return result
 
 
-
-
-
+start =2
+step=3
+limit=10
+sequence = np.arange(start,100,step).clip()

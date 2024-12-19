@@ -75,12 +75,15 @@ print("Solution for removing NaN is imputation- Filling the missing values. With
 prln("isna():\n", data.iloc[:, :7].isna().head())
 prln("isnull(): same as isna()\n", data.isnull().head())
 
-prln(data.isna().sum()) # axis=0, by default
+prln(data.isna().sum())  # axis=0, by default
 prln(data.isna().sum(axis=1))  # axis=0, by default
 
 prln("#1: drop rows with na values")
-prln(f"data.dropna(): works by default on a row and drops ROWS if (any) value in a row is NaN:\n{data.isna().sum(axis=1)}\n", data.dropna())  # works on all rows with minimum 1 NaN
-prln(f"data.dropna(axis=1): Drops a COLUMN if any row in that column is missing\n{data.isna().sum()}\n", data.dropna(axis=1))
+prln(
+    f"data.dropna(): works by default on a row and drops ROWS if (any) value in a row is NaN:\n{data.isna().sum(axis=1)}\n",
+    data.dropna())  # works on all rows with minimum 1 NaN
+prln(f"data.dropna(axis=1): Drops a COLUMN if any row in that column is missing\n{data.isna().sum()}\n",
+     data.dropna(axis=1))
 
 prln("#2: Imputation (changing the contents)")
 prln("data.fillna(-1):\n", data.fillna(-1))
@@ -91,14 +94,47 @@ mean_val = data['3:30:00'].mean()
 prln(data['3:30:00'].fillna(mean_val))
 
 prln('But, above approach is too vague.. no group by is used. ')
-prln(data_easy['Pressure'][data_easy['Pressure'].isna()])
-prln(data_easy.groupby('Drug_Name')['Pressure'].head())
-prln(data_easy.groupby('Drug_Name', group_keys=False)['Pressure'].apply(lambda x: x.fillna(x.mean()), include_groups=False).head(15))
-prln(data_easy.groupby('Drug_Name', group_keys=False)['Pressure'].apply(lambda x: x.fillna(-11), include_groups=False).head(15))
-data_easy['Pressure'] = data_easy.groupby('Drug_Name', group_keys=False)['Pressure'].apply(lambda x: x.fillna(-11), include_groups=False).head(15)
-prln(data_easy['Pressure'].head(15))
+prln(data_easy[['Drug_Name', 'Pressure']].head(22))
+'''
+prln("Data with pressure as nan:\n", data_easy[['Drug_Name', 'Pressure']][data_easy['Pressure'].isna()])
+prln("Groupby.head(number) gives n number of rows of EACH group:\n", data_easy.groupby('Drug_Name').head(5))
+prln(data_easy.groupby('Drug_Name', group_keys=False).head())
+prln(data_easy.groupby('Drug_Name', group_keys=False)['Pressure'].apply(lambda x: x.fillna('dddddddd'), include_groups=False).head(17))
+'''
+data_easy['Pressure'] = data_easy.groupby('Drug_Name', group_keys=False)['Pressure'].apply(lambda x: x.fillna(x.mean()),
+                                                                                           include_groups=False)
+prln(data_easy[['Drug_Name', 'Pressure']].head(22))
+
+prln("Miscellaneous functions")
+prln('cut function')
+temp_points = [5, 20, 35, 50, 60]
+temp_labels = ['low', 'medium', 'high', 'very_high']
+data_easy['temp_buckets'] = pd.cut(data_easy['Temperature'],
+                                   bins=temp_points,
+                                   labels=temp_labels
+                                   )
+prln(data_easy)
+data_easy['temp_buckets'] = pd.cut(data_easy['Temperature'],
+                                   bins=temp_points,
+                                   labels=temp_labels,
+                                   right=False
+                                   )
+prln("Look for datatype for buckets")
+data_easy.info()
+
+prln("Date functions")
+data_easy['timestamp'] = data_easy['Date'] + ' '+ data_easy['time']
+data_easy.info()
+data_easy['timestamp'] = pd.to_datetime(data_easy['timestamp'], yearfirst=True)
+data_easy.info()
+prln("With pd.to_datetime(column), datatype of column becomes datetime64. Now you can do anything that you want to do with dates")
+val = data_easy['timestamp'][0]
+prln(val)
+prln(val.year)
+d = pd.to_datetime("2020-10-15 10:30:00")
+prln(f"year={d.year} and minutes={d.minute} and day of week={d.dayofweek} and day_name={d.day_name()} and  tzname={d.tzname()} \ntimetuple={d.timetuple()}")
 
 
 print()
-# Average 0. seconds on Lenovo as against 0.08533406257629395 seconds on HP Pavilion
+# Average 0.792492151260376 seconds on Lenovo as against 0. seconds on HP Pavilion
 print("---Whole execution completed in %s seconds ---" % (time.time() - start_time))
