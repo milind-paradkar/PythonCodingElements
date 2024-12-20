@@ -48,7 +48,12 @@ print(f"indexing  np array out of multiple indexes. This is not possible with si
 print("numpy also supports element replacement using slicing:")
 l2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 nl2 = np.array(l2)
-print("nl2:", nl2)
+# nl2.fill(0)
+#np.reshape(nl2, (nl2.shape[0]+1,nl2.shape[1]+1))
+#res = np.arange((nl2.shape[0]+1)* (nl2.shape[1]+1)).reshape(nl2.shape[0]+1, nl2.shape[1]+1)
+print(nl2.shape)
+#print("nl2:", nl2, res)
+exit()
 # l2[3:] = 0  # Does not work. TypeError: can only assign an iterable
 nl2[3:] = 0
 print("nl2:", nl2)

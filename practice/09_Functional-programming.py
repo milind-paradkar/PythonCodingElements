@@ -275,6 +275,23 @@ print("ZIP creates tuples of all iterables (collecting it in list)  :", list(zip
 print("ZIP creates tuples of all iterables (collecting it in tuple) :", tuple(zip(a, b, c)))
 print("ZIP creates tuples of all iterables (collecting it in list)  :", set(zip(a, b, c)))
 
+student_data = [['S ROY', 4.0], ['B BOSE', 3.0], ['N KAR', 2.0], ['C DUTTA', 5.0], ['G GHOSH', 3.0]]
+scores =[4.0, 3.0, 2.0, 5.0]
+high = 4
+scores = filter(lambda x: x != high, scores)
+second_low_score = max(scores)
+student_data1 = list(filter(lambda x: x[1] ==second_low_score, student_data))
+print(list(filter(lambda x: x[1] == 2.0, student_data)))
+
+column_names = ['name', 'salary', 'job']
+db_rows = [('Alice', 180000, 'data scientist'),
+           ('Bob', 99000, 'data engineer'),
+           ('Frank', 87000, 'data analyst')]
+
+db = [dict(zip(column_names, row)) for row in db_rows]
+print(db)
+
+exit()
 # Reduce
 # from functools import reduce   --need this import
 print("\nREDUCE:")

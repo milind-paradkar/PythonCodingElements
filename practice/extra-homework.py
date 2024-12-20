@@ -1,3 +1,8 @@
+
+import pandas as pd
+import numpy as np
+
+'''
 class fruits:
     def __init__(self, price):
         self.price = price
@@ -150,7 +155,7 @@ v = np.array([200,300,400])
 print((x / v[:,None])[1][1])
 print(np.sort(np.array(['Ram','Astha','Raghavendra'])))
 import numpy as np
-
+'''
 
 def specific_elements(mat1: np.ndarray, mat2, r1, r2, c1, c2):
     '''mat1,mat2 are the two 2d numpy array.
@@ -175,3 +180,37 @@ start =2
 step=3
 limit=10
 sequence = np.arange(start,100,step).clip()
+
+
+
+df = pd.read_csv('billing.csv')
+print(df[['time', 'total_bill', 'tip']])
+print(df.loc[:, ['time', 'total_bill', 'tip']])
+print(df.iloc[:,0:2])
+print(pd.DataFrame(df, columns=['time', 'total_bill', 'tip']))
+
+print(df['time'].unique())
+print(df['time'].nunique())
+print(df.nunique())
+
+df = pd.DataFrame([[1, "Ram", "IT"], [2, "Shyam", "Ops"]], columns = ["emp_id", "name", "dept"])
+print(df)
+word = "Scaler Data Science Course"
+word_list = list(word)
+print(word_list[7:18])
+
+def road_tax(price):
+    tax = None
+    # YOUR CODE GOES HERE
+    if price > 100000:
+        tax  = price * 0.2
+    elif 75000 > price <= 100000:
+        tax = price * 0.15
+    elif 50000 < price <= 75000:
+        tax = price * 0.1
+    else:
+        tax = price * 0.05
+
+    return tax
+
+road_tax(55000)
