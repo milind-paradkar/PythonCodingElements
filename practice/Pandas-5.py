@@ -125,16 +125,17 @@ data_easy.info()
 prln("Date functions")
 data_easy['timestamp'] = data_easy['Date'] + ' '+ data_easy['time']
 data_easy.info()
-data_easy['timestamp'] = pd.to_datetime(data_easy['timestamp'], yearfirst=True)
+data_easy['timestamp'] = pd.to_datetime(data_easy['timestamp'], dayfirst=True)
 data_easy.info()
-prln("With pd.to_datetime(column), datatype of column becomes datetime64. Now you can do anything that you want to do with dates")
+prln("With pd.to_datetime(column), datatype of column becomes datetime64. Now you can do anything that you "
+     "want to do with dates")
 val = data_easy['timestamp'][0]
 prln(val)
 prln(val.year)
-d = pd.to_datetime("2020-10-15 10:30:00")
+d = pd.to_datetime("2020-10-15 10:30:00", yearfirst=True)
 prln(f"year={d.year} and minutes={d.minute} and day of week={d.dayofweek} and day_name={d.day_name()} and  tzname={d.tzname()} \ntimetuple={d.timetuple()}")
 
 
 print()
-# Average 0.792492151260376 seconds on Lenovo as against 0. seconds on HP Pavilion
+# Average 0.31723543343 seconds on Lenovo as against 0.10731649398803711 seconds on HP Pavilion
 print("---Whole execution completed in %s seconds ---" % (time.time() - start_time))
