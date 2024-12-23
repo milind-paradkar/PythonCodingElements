@@ -17,7 +17,7 @@ def e():
 
 
 pd.set_option('display.width', 600)
-pd.set_option('display.max_columns', 20)
+pd.set_option('display.max_columns', 15)
 mf = pd.read_csv('20241223_MFPFDetails.csv')
 mf.drop('Unnamed: 15', inplace=True, axis=1)
 mf.drop([14, 18], inplace=True)
@@ -74,5 +74,5 @@ print(mf_PSU[cols].sort_values(by='Value At Cost', ascending=False).head(7))
 
 
 print("\n\n")
-# Average 0.04640340805053711 seconds on Lenovo as against 0. seconds on HP Pavilion
+# Average 0.04640340805053711 seconds on Lenovo as against 0.03748369216918945 seconds on HP Pavilion
 print("---Whole execution completed in %s seconds ---" % (time.time() - start_time))
