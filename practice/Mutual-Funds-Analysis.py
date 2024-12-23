@@ -1,5 +1,20 @@
 import pandas as pd
-import numpy as np
+import time
+
+start_time = time.time()
+
+ctr = 1
+
+
+def prln(*kwargs):
+    global ctr
+    print(f"[{ctr}]:\n", *kwargs, "\n", sep='')
+    ctr = ctr + 1
+
+
+def e():
+    exit()
+
 
 pd.set_option('display.width', 600)
 pd.set_option('display.max_columns', 20)
@@ -55,3 +70,9 @@ print(mf_PSU[cols].sort_values(by='Profit Scale', ascending=False).head(7))
 print('\n\nBy Value At Cost..')
 print(mf_PSU[cols].sort_values(by='Value At Cost', ascending=False).head(7))
 '''
+
+
+
+print("\n\n")
+# Average 0.04640340805053711 seconds on Lenovo as against 0. seconds on HP Pavilion
+print("---Whole execution completed in %s seconds ---" % (time.time() - start_time))
