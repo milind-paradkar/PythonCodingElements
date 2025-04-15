@@ -18,7 +18,7 @@ print("Hello,", usr, "!", "-from", "Milind", sep=' ')
 
 xy = ["1", 2]
 print(type(xy))
-
+# exit()
 i = 5
 i += 7
 print("i:", i)
