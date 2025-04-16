@@ -4,7 +4,7 @@
 Multi-line comment
 looks
 like
-        this
+        thismi
 '''
 
 '''  Getting input from user and showing message
